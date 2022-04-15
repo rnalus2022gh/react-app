@@ -30,7 +30,7 @@ jobs:
       - name: Upload Test step Coverage folder
         uses: actions/upload-artifact@v1
         with:
-          name: code-coverage name
+          name: code-coverage artifact
           path: coverage
       - name: Build Projects
         if: github.event_name == 'push'
@@ -39,7 +39,7 @@ jobs:
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
-          name: build-coverage name
+          name: build-coverage artifact
           path: build
       - name: Deploy to Staging
         if: github.event_name == 'push'
