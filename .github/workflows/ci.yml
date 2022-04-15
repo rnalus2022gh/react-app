@@ -63,7 +63,7 @@ jobs:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       - name: Deploy to Production
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: npx surge --project ./build --domain jumpy-stop.surge.sh
+        run: npx surge --project ./build --domain charming-kiss.surge.sh
       - name: Upload Code Coverage Reports
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx codecov
