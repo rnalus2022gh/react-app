@@ -42,10 +42,11 @@ jobs:
           name: build-coverage artifact
           path: build
       - name: Create a Release
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx semantic-release
-        env:
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact
       - name: Deploy to Staging
         if: github.event_name == 'push' && github.ref == 'refs/head/master'
         run: npx surge --project ./build --domain jumpy-stop.surge.sh
