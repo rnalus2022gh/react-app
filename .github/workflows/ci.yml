@@ -28,7 +28,7 @@ jobs:
         env:
           CI: true
       - name: Upload Test step Coverage folder
-        uses: actions/uplaod-artifact@v1
+        uses: actions/upload-artifact@v1
         with:
           name: code-coverage name
           path: coverage
