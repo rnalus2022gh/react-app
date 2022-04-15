@@ -36,7 +36,7 @@ jobs:
         if: github.event_name == 'push'
         run: npm run build
       - name: Upload Build step Coverage folder
-        uses: actions/uplaod-artifact@v1
+        uses: actions/upload-artifact@v1
         with:
           name: build-coverage name
           path: build
