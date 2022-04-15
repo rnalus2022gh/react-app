@@ -20,9 +20,9 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "14.x"
       - run: npm ci
-      ###- run: npm run format
+      ####- run: npm run format
       - run: npm run format:check
       - run: npm test -- --coverage
         env:
@@ -42,12 +42,13 @@ jobs:
           name: build-coverage artifact
           path: build
       - name: Create a Release
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx semantic-release
-        env:
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact
       - name: Deploy to Staging
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/head/master'
         run: npx surge --project ./build --domain jumpy-stop.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
