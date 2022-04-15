@@ -21,8 +21,8 @@ jobs:
         env:
           CI: true
       - name: Build Projects
-      - if: github.event_name == 'push'
-      - run: npm run build 
+        if: github.event_name == 'push'
+        run: npm run build 
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain silent-apparatus.surge.sh
