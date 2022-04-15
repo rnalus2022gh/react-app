@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/download-artifact@v2
       - name: Deploy to Staging
-        if: github.event_name == 'push' && github.ref == 'refs/head/master'
+        if: github.event_name == 'push'
         run: npx surge --project ./build --domain jumpy-stop.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
