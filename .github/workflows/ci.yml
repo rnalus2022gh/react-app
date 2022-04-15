@@ -46,7 +46,7 @@ jobs:
         run: npx semantic-release
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/download-artifact
+      - uses: actions/download-artifact@v1
       - name: Deploy to Staging
         if: github.event_name == 'push' && github.ref == 'refs/head/master'
         run: npx surge --project ./build --domain jumpy-stop.surge.sh
