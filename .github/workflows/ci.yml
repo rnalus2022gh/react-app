@@ -22,10 +22,10 @@ jobs:
           CI: true
       - name: Build Projects
         if: github.event_name == 'push'
-        run: npm run build 
+        run: npm run build
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain silent-apparatus.surge.sh
-        env: 
+        env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
